@@ -26,6 +26,14 @@
             margin-bottom: 20px;
         }
 
+        .message {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+            display: none;
+        }
+
         .options {
             display: flex;
             justify-content: center;
@@ -52,7 +60,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 50px;
+            font-size: 150px; /* Đã làm trái tim lớn hơn */
             color: red;
         }
 
@@ -74,6 +82,50 @@
                 transform: translateY(100vh);
             }
         }
+
+        /* Cây thông Noel */
+        .tree {
+            position: absolute;
+            bottom: 50px;
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 100px solid green;
+            transform: translateX(-50%);
+        }
+
+        .tree:before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -60px;
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 80px solid green;
+        }
+
+        .tree:after {
+            content: '';
+            position: absolute;
+            top: -70px;
+            left: -60px;
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 60px solid green;
+        }
+
+        .tree .star {
+            position: absolute;
+            top: -110px;
+            left: -10px;
+            font-size: 30px;
+            color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -85,7 +137,13 @@
         <div class="option" id="khong">Không</div>
     </div>
 
+    <div class="message" id="message">Chúc em Giáng Sinh vui vẻ hạnh phúc bên anh!</div>
     <div class="heart" id="heart">❤️</div>
+
+    <!-- Cây thông Noel -->
+    <div class="tree" id="tree">
+        <div class="star">⭐</div>
+    </div>
 
     <script>
         // Tạo hiệu ứng tuyết
@@ -102,11 +160,13 @@
         document.getElementById("co").addEventListener("click", function () {
             document.body.style.backgroundColor = "#ffcccc"; // Màu nền khi chọn "Có"
             document.getElementById("heart").style.display = "block"; // Hiển thị trái tim
+            document.getElementById("message").style.display = "block"; // Hiển thị thông điệp
         });
 
         document.getElementById("khong").addEventListener("click", function () {
             document.body.style.backgroundColor = "#f1f1f1"; // Quay lại nền mặc định
             document.getElementById("heart").style.display = "none"; // Ẩn trái tim
+            document.getElementById("message").style.display = "none"; // Ẩn thông điệp
         });
     </script>
 
